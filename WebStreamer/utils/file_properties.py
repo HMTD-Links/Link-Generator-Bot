@@ -88,3 +88,8 @@ def get_name(media_msg: Union[Message, FileId]) -> str:
         file_name = f"{media_type}-{date}{ext}"
 
     return file_name
+
+def get_file_caption(m):
+    media = get_file_caption(m)
+    return getattr(media, "get_file_caption", "")
+
