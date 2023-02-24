@@ -32,21 +32,21 @@ async def media_receive_handler(_, m: Message):
     file_hash = get_hash(log_msg, Var.HASH_LENGTH)
     stream_link = f"{Var.URL}{log_msg.id}/{quote_plus(get_name(m))}?hash={file_hash}"
     short_link = f"{Var.URL}{file_hash}{log_msg.id}"
-    logger.info(f"Generated link: {stream_link} for {m.from_user.first_name}")
+    logger.info(f"Generated link :- {stream_link} for {m.from_user.first_name}")
     try:
         await m.reply_text(
-            text="<code>{}</code>\n(<a href='{}'>shortened</a>)".format(
+            text="<b>{file_caption}\n➠ Link :- [Click here]({})</b>\n<b>(<a href='{}'>Shortened</a>)</b>".format(
                 stream_link, short_link
             ),
             quote=True,
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("Open", url=stream_link)]]
+                [[InlineKeyboardButton("Download Link", url=stream_link)]]
             ),
         )
     except errors.ButtonUrlInvalid:
         await m.reply_text(
-            text="<code>{}</code>\n\nshortened: {})".format(
+            text="<b>{file_caption}\n➠ Link :- [Click here]({})</b>\n\nshortened: {})".format(
                 stream_link, short_link
             ),
             quote=True,
