@@ -9,6 +9,7 @@ from WebStreamer.bot import StreamBot, logger
 from WebStreamer.utils import get_hash, get_name
 from pyrogram.enums.parse_mode import ParseMode
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.file_id import FileId
 
 @StreamBot.on_message(
     filters.private
