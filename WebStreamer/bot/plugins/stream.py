@@ -9,7 +9,7 @@ from WebStreamer.bot import StreamBot, logger
 from WebStreamer.utils import get_hash, get_name
 from pyrogram.enums.parse_mode import ParseMode
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-
+from umongo import Instance, Document, fields
 
 @StreamBot.on_message(
     filters.private
@@ -52,3 +52,13 @@ async def media_receive_handler(_, m: Message):
             quote=True,
             parse_mode=ParseMode.HTML,
         )
+
+@instance.register
+class Media(Document):
+    file_id = fields.StrField(attribute='_id')
+    file_ref = fields.StrField(allow_none=True)
+    file_name = fields.StrField(required=True)
+    file_size = fields.IntField(required=True)
+    file_type = fields.StrField(allow_none=True)
+    mime_type = fields.StrField(allow_none=True)
+    caption = fields.StrField(allow_none=True)
