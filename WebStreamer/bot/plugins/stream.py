@@ -35,7 +35,7 @@ async def media_receive_handler(_, m: Message):
     try:
         await m.reply_text(
             text="<b>{}\n➠ Link :- [Click here]({})</b>\n<b>(<a href='{}'>Shortened</a>)</b>".format(
-                file.text, stream_link, short_link
+                file_name, stream_link, short_link
             ),
             quote=True,
             parse_mode=ParseMode.HTML,
@@ -46,7 +46,7 @@ async def media_receive_handler(_, m: Message):
     except errors.ButtonUrlInvalid:
         await m.reply_text(
             text="<b>{}\n➠ Link :- [Click here]({})</b>\n\nshortened: {})".format(
-                m.text, stream_link, short_link
+                file_name, stream_link, short_link
             ),
             quote=True,
             parse_mode=ParseMode.HTML,
