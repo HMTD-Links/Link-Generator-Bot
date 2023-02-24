@@ -1,6 +1,3 @@
-# This file is a part of TG-FileStreamBot
-# Coding : Jyothis Jayanth [@EverythingSuckz]
-
 import logging
 from pyrogram import filters, errors
 from WebStreamer.vars import Var
@@ -33,12 +30,12 @@ async def media_receive_handler(_, m: Message):
     file_hash = get_hash(log_msg, Var.HASH_LENGTH)
     stream_link = f"{Var.URL}{log_msg.id}/{quote_plus(get_name(m))}?hash={file_hash}"
     short_link = f"{Var.URL}{file_hash}{log_msg.id}"
-    file_name = get_name(file_id(m))
+    file_name = get_name(log_msg)
     logger.info(f"Generated link :- {stream_link} for {m.from_user.first_name}")
     try:
         await m.reply_text(
             text="<b>{}\n➠ Link :- [Click here]({})</b>\n<b>(<a href='{}'>Shortened</a>)</b>".format(
-                file_name, stream_link, short_link
+                get_name(log_msg), stream_link, short_link
             ),
             quote=True,
             parse_mode=ParseMode.HTML,
@@ -49,7 +46,7 @@ async def media_receive_handler(_, m: Message):
     except errors.ButtonUrlInvalid:
         await m.reply_text(
             text="<b>{}\n➠ Link :- [Click here]({})</b>\n\nshortened: {})".format(
-                file_name, stream_link, short_link
+                get_name(log_msg), stream_link, short_link
             ),
             quote=True,
             parse_mode=ParseMode.HTML,
