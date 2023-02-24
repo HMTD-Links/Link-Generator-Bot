@@ -7,6 +7,7 @@ from WebStreamer.vars import Var
 from urllib.parse import quote_plus
 from WebStreamer.bot import StreamBot, logger
 from WebStreamer.utils import get_hash, get_name
+from WebStreamer.utils.file_properties import get_name
 from pyrogram.enums.parse_mode import ParseMode
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.file_id import FileId
