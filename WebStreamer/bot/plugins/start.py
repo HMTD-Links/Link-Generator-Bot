@@ -2,39 +2,25 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from WebStreamer.vars import Var 
-from WebStreamer.bot import StreamBot
-
-@StreamBot.on_message(filters.command("start") & filters.private)
-async def start(_, m: Message):
-    if Var.ALLOWED_USERS and not ((str(m.from_user.id) in Var.ALLOWED_USERS) or (m.from_user.username in Var.ALLOWED_USERS)):
-        return await m.reply(
-            "You are not in the allowed list of users who can use me. \
-            Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.",
-            disable_web_page_preview=True, quote=True
-        )
-    await m.reply(
-        f'Hi {m.from_user.mention(style="md")}, Send me a file to get an instant stream link.'
-    )
+from WebStreamer.bot import Star_Moviess_Tamil
 
 from pyrogram import Client, filters, enums
 from bot import Star_Moviess_Tamil
 from config import ADMINS, AUTH_USERS
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, CallbackQuery
-from translation import Translation
+from WebStreamer.translation import Translation
 from pyrogram.errors import MessageNotModified, UserIsBlocked, InputUserDeactivated, FloodWait
 import random
 import os
 import asyncio
 import traceback
 import base64
-
 from pyrogram import Client
 from pyrogram import StopPropagation, filters
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
-
 import vers
-from handlers.broadcast import broadcast
-from handlers.check_user import handle_user_status
+from WebStreamer.handlers.broadcast import broadcast
+from WebStreamer.handlers.check_user import handle_user_status
 from WebStreamer.handlers.database import Database
 LOG_CHANNEL = WebStreamer.vars.LOG_CHANNEL
 AUTH_USERS = WebStreamer.vars.AUTH_USERS
@@ -62,7 +48,7 @@ MAIN_MENU_BUTTONS = [
             ]
         ]
 
-@Star_Moviess_Tamil.on_message(filters.private)
+@Star_Moviess_Tamil.on_message(filters.command("start") & filters.private)
 async def _(bot, cmd):
     await handle_user_status(bot, cmd)
 
@@ -79,7 +65,19 @@ async def _(bot, cmd):
         else:
             logging.info(f"New User :- Name :- {message.from_user.first_name} ID :- {message.from_user.id}")
 
-@Star_Moviess_Tamil.on_message(start_filter)
+@Star_Moviess_Tamil.on_message(filters.command("start") & filters.private)
+async def start(_, m: Message):
+    if Var.ALLOWED_USERS and not ((str(m.from_user.id) in Var.ALLOWED_USERS) or (m.from_user.username in Var.ALLOWED_USERS)):
+        return await m.reply(
+            "You are not in the allowed list of users who can use me. \
+            Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.",
+            disable_web_page_preview=True, quote=True
+        )
+    await m.reply(
+        f'Hi {m.from_user.mention(style="md")}, Send me a file to get an instant stream link.'
+    )
+
+@Star_Moviess_Tamil.on_message(filters.command("start") & filters.private)
 async def start(client, message):
     reply_markup = InlineKeyboardMarkup(MAIN_MENU_BUTTONS)
     await message.reply_text(
