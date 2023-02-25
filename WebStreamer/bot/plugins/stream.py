@@ -32,12 +32,12 @@ async def media_receive_handler(_, m: Message):
     short_link = f"{Var.URL}{file_hash}{log_msg.id}"
     cap = get_media_file_cap(log_msg)
     file_name = get_name(log_msg)
-    file_size = get_media_file_size(log_msg)
+    file_size = humanbytes(get_media_file_size(m))
     logger.info(f"Generated link :- {stream_link} for {m.from_user.first_name}")
     try:
         await m.reply_text(
             text="<b>{} {} {}\n➠ Link :- [Click here]({})</b>\n<b>(<a href='{}'>Shortened</a>)</b>".format(
-                file_name, file_size, cap, stream_link, short_link
+                file_name, humanbytes(get_media_file_size(m)), cap, stream_link, short_link
             ),
             quote=True,
             parse_mode=ParseMode.HTML,
