@@ -36,7 +36,7 @@ async def start(_, m: Message):
             disable_web_page_preview=True, quote=True
         )
     await m.reply_text(
-            text=f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            text=f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
     raise StopPropagation
@@ -56,7 +56,7 @@ HELP_BUTTONS = [
 async def help(client, message):
     reply_markup = InlineKeyboardMarkup(HELP_BUTTONS)
     await message.reply(
-            f"Hi 👋🏻 {message.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
 
@@ -75,7 +75,7 @@ async def about(client, message):
     text = ABOUT
     reply_markup = InlineKeyboardMarkup(ABOUT_BUTTONS)
     await message.reply(
-            f"Hi 👋🏻 {message.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
 
@@ -93,7 +93,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(HELP_BUTTON)
         try:
             await query.edit_message(
-                f"Hi 👋🏻 {m.from_user.mention}♥️,  Send me a File 📂 to get an Instant Stream link.",
+                f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
@@ -111,7 +111,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(GROUP_BUTTONS)
         try:
             await query.edit_message_text(
-                f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+                f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
@@ -129,7 +129,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(TUTORIAL_BUTTONS)
         try:
             await query.edit_message(
-                f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+                f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
@@ -153,7 +153,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(START_BUTTONS)
         try:
             await query.edit_message(
-                f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+                f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
