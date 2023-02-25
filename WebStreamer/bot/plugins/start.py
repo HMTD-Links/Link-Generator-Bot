@@ -36,13 +36,10 @@ async def start(_, m: Message):
             disable_web_page_preview=True, quote=True
         )
     await m.reply(
-        text=f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a file to get an instant stream link.".format(
-                mention = message.from_user.mention
-            ),
-        reply_markup=reply_markup,
-        disable_web_page_preview=True,
-        quote=True
-    )
+            "You are not in the allowed list of users who can use me. \
+            Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.",
+            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+        )
     raise StopPropagation
 
 
