@@ -13,6 +13,7 @@ class Var(object):
     API_ID = int(environ.get("API_ID"))
     API_HASH = str(environ.get("API_HASH"))
     BOT_TOKEN = str(environ.get("BOT_TOKEN"))
+    name = str(getenv('name', 'filetolinkbot'))
     SLEEP_THRESHOLD = int(environ.get("SLEEP_THRESHOLD", "60"))  # 1 minte
     WORKERS = int(environ.get("WORKERS", "6"))  # 6 workers = 6 commands at once
     BIN_CHANNEL = int(
