@@ -36,7 +36,7 @@ async def start(_, m: Message):
             disable_web_page_preview=True, quote=True
         )
     await m.reply_text(
-            text=f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            text="Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
     raise StopPropagation
