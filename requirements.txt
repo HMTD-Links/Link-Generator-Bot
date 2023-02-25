@@ -1,4 +1,18 @@
-aiohttp<=3.8.1
-pyrogram<=2.0.93 
-python-dotenv<=0.20.0
+# ------- For Bot Working ------- #
+Pyromod
 TgCrypto<=1.2.5
+pyrogram<=2.0.93
+datetime
+python-dotenv<=0.20.0
+aiofiles
+aiohttp<=3.8.1
+uvloop
+motor
+# --------- For Database -------- #
+pymongo
+dnspython
+
+
+ 
+
+
