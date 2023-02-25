@@ -11,7 +11,7 @@ from pyromod import listen
 from WebStreamer.bot import StreamBot
 
 links = []
-@StreamBot.on_message(filters.private & filters.command("/multi"))
+@StreamBot.on_message(filters.private & filters.command("multi"))
 async def multi_files(bot, msg):
     try : 
       reciv = await StreamBot.ask(msg.chat.id,"hit /multi when you finish sending your files")
