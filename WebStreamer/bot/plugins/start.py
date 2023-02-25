@@ -48,6 +48,23 @@ MAIN_MENU_BUTTONS = [
         ]
 
 @StreamBot.on_message(filters.command("start") & filters.private)
+async def start(_, client, m: Message):
+    reply_markup = InlineKeyboardMarkup(MAIN_MENU_BUTTONS)
+    if Var.ALLOWED_USERS and not ((str(m.from_user.id) in Var.ALLOWED_USERS) or (m.from_user.username in Var.ALLOWED_USERS)):
+        return await m.reply(
+            "You are not in the allowed list of users who can use me. \
+            Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.",
+            disable_web_page_preview=True, quote=True
+        )
+    await message.reply_text(
+        text = Translation.START.format(
+                mention = message.from_user.mention
+            ),
+        reply_markup=reply_markup,
+        disable_web_page_preview=True,
+        quote=True
+    )
+    raise StopPropagation
 async def _(bot, cmd):
     await handle_user_status(bot, cmd)
 
@@ -63,32 +80,6 @@ async def _(bot, cmd):
             )
         else:
             logging.info(f"New User :- Name :- {message.from_user.first_name} ID :- {message.from_user.id}")
-
-@StreamBot.on_message(filters.command("start") & filters.private)
-async def start(_, m: Message):
-    if Var.ALLOWED_USERS and not ((str(m.from_user.id) in Var.ALLOWED_USERS) or (m.from_user.username in Var.ALLOWED_USERS)):
-        return await m.reply(
-            "You are not in the allowed list of users who can use me. \
-            Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.",
-            disable_web_page_preview=True, quote=True
-        )
-    await m.reply(
-        f'Hi {m.from_user.mention(style="md")}, Send me a file to get an instant stream link.'
-    )
-
-@StreamBot.on_message(filters.command("start") & filters.private)
-async def start(client, message):
-    reply_markup = InlineKeyboardMarkup(MAIN_MENU_BUTTONS)
-    await message.reply_text(
-        text = Translation.START.format(
-                mention = message.from_user.mention
-            ),
-        reply_markup=reply_markup,
-        disable_web_page_preview=True,
-        quote=True
-    )
-    raise StopPropagation
-
 
 ################################################################################################################################################################################################################################################
 # Help Command
