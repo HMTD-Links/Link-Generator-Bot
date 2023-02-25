@@ -11,8 +11,6 @@ from WebStreamer.bot import StreamBot
 ################################################################################################################################################################################################################################################
 # Start Command
 
-START = "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a file to get an instant stream link."
-
 MAIN_MENU_BUTTONS = [
             [
                 InlineKeyboardButton('👨🏻‍💻 Creator', url='https://t.me/Star_Movies_Karthik')
@@ -38,7 +36,7 @@ async def start(_, m: Message):
             disable_web_page_preview=True, quote=True
         )
     await m.reply(
-        text = START.format(
+        text="Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a file to get an instant stream link.".format(
                 mention = message.from_user.mention
             ),
         reply_markup=reply_markup,
