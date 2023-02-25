@@ -72,9 +72,8 @@ async def start(_, m: Message):
             Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.",
             disable_web_page_preview=True, quote=True
         )
-    await m.reply(
     reply_markup = InlineKeyboardMarkup(MAIN_MENU_BUTTONS)
-    await message.reply_text(
+    await m.reply(
         text = Translation.START.format(
                 mention = message.from_user.mention
             ),
