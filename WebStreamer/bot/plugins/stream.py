@@ -35,8 +35,8 @@ async def media_receive_handler(_, m: Message):
     file_caption = get_file_caption(log_msg)
     logger.info(f"Generated link :- {stream_link} for {m.from_user.first_name}")
     try:
-        await m.reply_cap(
-            cap="<b>{}\n➠ Link :- [Click here]({})</b>\n<b>(<a href='{}'>Shortened</a>)</b>".format(
+        await cap = m.caption
+            m.reply(f"<b>{}\n➠ Link :- [Click here]({})</b>\n<b>(<a href='{}'>Shortened</a>)</b>").format(
                 cap, stream_link, short_link
             ),
             quote=True,
@@ -46,7 +46,7 @@ async def media_receive_handler(_, m: Message):
             ),
         )
     except errors.ButtonUrlInvalid:
-        await m.reply_text(
+        await m.reply_cap(
             text="<b>{}\n➠ Link :- [Click here]({})</b>\n\nshortened: {})".format(
                 cap, stream_link, short_link
             ),
