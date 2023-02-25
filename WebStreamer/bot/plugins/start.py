@@ -5,8 +5,7 @@ from WebStreamer.vars import Var
 from WebStreamer.bot import StreamBot
 
 from pyrogram import Client, filters, enums
-from bot import Star_Moviess_Tamil
-from config import ADMINS, AUTH_USERS
+from vers import ADMINS, AUTH_USERS
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, CallbackQuery
 from WebStreamer.translation import Translation
 from pyrogram.errors import MessageNotModified, UserIsBlocked, InputUserDeactivated, FloodWait
