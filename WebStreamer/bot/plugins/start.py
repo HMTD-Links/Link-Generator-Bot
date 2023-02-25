@@ -7,6 +7,7 @@ from pyrogram import Client, filters, enums
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, CallbackQuery
 from WebStreamer.vars import Var 
 from WebStreamer.bot import StreamBot
+from pyrogram.enums.parse_mode import ParseMode
 
 ################################################################################################################################################################################################################################################
 # Start Command
@@ -36,8 +37,12 @@ async def start(_, m: Message):
             disable_web_page_preview=True, quote=True
         )
     await m.reply_text(
-            text="Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
-            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+            text="<b>Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+            ),
+            quote=True,
+            parse_mode=ParseMode.HTML,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True
         )
     raise StopPropagation
 
