@@ -56,7 +56,7 @@ HELP_BUTTONS = [
 async def help(client, message):
     reply_markup = InlineKeyboardMarkup(HELP_BUTTONS)
     await message.reply(
-            f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            f"Hi 👋🏻 {message.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
 
@@ -75,7 +75,7 @@ async def about(client, message):
     text = ABOUT
     reply_markup = InlineKeyboardMarkup(ABOUT_BUTTONS)
     await message.reply(
-            f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            f"Hi 👋🏻 {message.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
 
