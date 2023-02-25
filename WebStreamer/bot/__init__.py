@@ -6,6 +6,8 @@ import os
 import os.path
 from ..vars import Var
 import logging
+import pyromod
+from pyromod import listen
 from pyrogram import Client
 
 logger = logging.getLogger("bot")
