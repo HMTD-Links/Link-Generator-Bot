@@ -93,7 +93,7 @@ def get_media_file_size(m):
     media = get_media_from_message(m)
     return getattr(media, "file_size", 0)
 
-def get_media_file_cap(m):
+def get_media_file_cap(media_msg: Message) -> str:
     media = get_media_from_message(media_msg)
     return getattr(media, "cap", "")
 
