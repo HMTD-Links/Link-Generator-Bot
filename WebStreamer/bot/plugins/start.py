@@ -83,7 +83,7 @@ async def about(client, message):
 # CallBackQuery For Star Message
 
 @StreamBot.on_callback_query()
-async def about(client, query:callback_query)
+async def callback_query(client: Client, query: CallbackQuery):
     if query.data=="HELP_CALLBACK":
         HELP_BUTTON = [
             [
