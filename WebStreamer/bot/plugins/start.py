@@ -36,8 +36,7 @@ async def start(_, m: Message):
             disable_web_page_preview=True, quote=True
         )
     await m.reply(
-            "You are not in the allowed list of users who can use me. \
-            Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.",
+            "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
     raise StopPropagation
@@ -45,8 +44,6 @@ async def start(_, m: Message):
 
 ################################################################################################################################################################################################################################################
 # Help Command
-
-HELP = "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️, I'm File to Link Bot"
 
 HELP_BUTTONS = [
             [
@@ -57,21 +54,14 @@ HELP_BUTTONS = [
 
 @Star_Moviess_Tamil.on_message(filters.command("help") & filters.private & filters.incoming)
 async def help(client, message):
-    text = HELP
     reply_markup = InlineKeyboardMarkup(HELP_BUTTONS)
-    await message.reply_text(
-        text = HELP.format(
-                mention = message.from_user.mention
-            ),
-        reply_markup=reply_markup,
-        disable_web_page_preview=True,
-        quote=True
-    )
+    await m.reply(
+            "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+        )
 
 ################################################################################################################################################################################################################################################
 # About Command
-
-ABOUT = "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️, I'm Karthik"
 
 ABOUT_BUTTONS = [
             [
@@ -84,20 +74,13 @@ ABOUT_BUTTONS = [
 async def about(client, message):
     text = ABOUT
     reply_markup = InlineKeyboardMarkup(ABOUT_BUTTONS)
-    await message.reply_text(
-        text = ABOUT.format(
-                mention = message.from_user.mention
-            ),
-        reply_markup=reply_markup,
-        disable_web_page_preview=True,
-        quote=True
-    )
+    await m.reply(
+            "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+        )
 
 ################################################################################################################################################################################################################################################
 # CallBackQuery For Star Message
-
-SUPPORT = "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️, I'm Karthik"
-
 
     elif query.data=="HELP_CALLBACK":
         HELP_BUTTON = [
@@ -108,12 +91,9 @@ SUPPORT = "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️, I'm Karthik"
         reply_markup = InlineKeyboardMarkup(HELP_BUTTON)
         try:
             await query.edit_message_text(
-                text = ABOUT.format(
-                        mention = query.from_user.mention
-                    ),
-                disable_web_page_preview=True,
-                reply_markup=reply_markup
-            )
+                "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+        )
         except MessageNotModified:
             pass
 
@@ -129,12 +109,9 @@ SUPPORT = "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️, I'm Karthik"
         reply_markup = InlineKeyboardMarkup(GROUP_BUTTONS)
         try:
             await query.edit_message_text(
-                text = SUPPORT.format(
-                        mention = query.from_user.mention
-                    ),
-                disable_web_page_preview=True,
-                reply_markup=reply_markup
-            )
+                "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+        )
         except MessageNotModified:
             pass    
 
@@ -150,12 +127,9 @@ SUPPORT = "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️, I'm Karthik"
         reply_markup = InlineKeyboardMarkup(TUTORIAL_BUTTONS)
         try:
             await query.edit_message_text(
-                text = HELP.format(
-                        mention = query.from_user.mention
-                    ),
-                disable_web_page_preview=True,
-                reply_markup=reply_markup
-            )
+                "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+        )
         except MessageNotModified:
             pass      
           
@@ -177,12 +151,9 @@ SUPPORT = "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️, I'm Karthik"
         reply_markup = InlineKeyboardMarkup(START_BUTTONS)
         try:
             await query.edit_message_text(
-                text = START.format(
-                        mention = query.from_user.mention
-                    ),
-                disable_web_page_preview=True,
-                reply_markup=reply_markup
-            )
+                "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+        )
         except MessageNotModified:
             pass    
         return
