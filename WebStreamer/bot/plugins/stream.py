@@ -8,17 +8,17 @@ from pyrogram.enums.parse_mode import ParseMode
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.file_id import FileId
 from pyromod import listen 
-
+from WebStreamer.bot import StreamBot
 
 links = []
-@StreamBot.on_message(filters.private & filters.command("/seq"))
-async def sequence(bot, msg):
+@StreamBot.on_message(filters.private & filters.command("/multi"))
+async def multi_files(bot, msg):
     try : 
-      reciv = await StreamBot.ask(msg.chat.id,"hit /seq when you finish sending your files")
+      reciv = await StreamBot.ask(msg.chat.id,"hit /multi when you finish sending your files")
       log_msg = await msg.forward(chat_id = VAR.BIN_CHANNEL)
       stream_link = f"{Var.URL}{log_msg.id}/{quote_plus(get_name(m))}?hash={file_hash}"
       links.append(stream_link)
-      if reciv.text =="/seq":
+      if reciv.text =="/multi":
           text = " "
           for i in links :
               text+=f"{i}\n\n"
