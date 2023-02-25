@@ -52,11 +52,11 @@ HELP_BUTTONS = [
             ]
         ]
 
-@Star_Moviess_Tamil.on_message(filters.command("help") & filters.private & filters.incoming)
+@StreamBot.on_message(filters.command("help") & filters.private & filters.incoming)
 async def help(client, message):
     reply_markup = InlineKeyboardMarkup(HELP_BUTTONS)
-    await m.reply(
-            "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+    await message.reply(
+            f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
 
@@ -70,12 +70,12 @@ ABOUT_BUTTONS = [
             ]
         ]
 
-@Star_Moviess_Tamil.on_message(filters.command("about") & filters.private & filters.incoming)
+@StreamBot.on_message(filters.command("about") & filters.private & filters.incoming)
 async def about(client, message):
     text = ABOUT
     reply_markup = InlineKeyboardMarkup(ABOUT_BUTTONS)
-    await m.reply(
-            "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+    await message.reply(
+            f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
 
@@ -90,7 +90,7 @@ async def about(client, message):
             ]
         reply_markup = InlineKeyboardMarkup(HELP_BUTTON)
         try:
-            await query.edit_message_text(
+            await query.edit_message(
                 f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
@@ -109,7 +109,7 @@ async def about(client, message):
         reply_markup = InlineKeyboardMarkup(GROUP_BUTTONS)
         try:
             await query.edit_message_text(
-                "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+                f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
@@ -126,8 +126,8 @@ async def about(client, message):
             ]
         reply_markup = InlineKeyboardMarkup(TUTORIAL_BUTTONS)
         try:
-            await query.edit_message_text(
-                "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            await query.edit_message(
+                f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
@@ -150,8 +150,8 @@ async def about(client, message):
 
         reply_markup = InlineKeyboardMarkup(START_BUTTONS)
         try:
-            await query.edit_message_text(
-                "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            await query.edit_message(
+                f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
