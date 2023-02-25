@@ -35,8 +35,7 @@ async def media_receive_handler(_, m: Message):
     file_caption = get_file_caption(log_msg)
     logger.info(f"Generated link :- {stream_link} for {m.from_user.first_name}")
     try:
-        await cap = m.caption
-            m.reply(f"<b>{cap}\n➠ Link :- [Click here]({stream_link})</b>\n<b>(<a href='{short_link}'>Shortened</a>)</b>"),
+        await m.reply_cap(f"<b>{cap}\n➠ Link :- [Click here]({stream_link})</b>\n<b>(<a href='{short_link}'>Shortened</a>)</b>"),
             quote=True,
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
