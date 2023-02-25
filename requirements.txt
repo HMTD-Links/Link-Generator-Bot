@@ -8,6 +8,10 @@ aiofiles
 aiohttp<=3.8.1
 uvloop
 motor
+apscheduler
+requests
+psutil
+pyromod
 # --------- For Database -------- #
 pymongo
 dnspython
