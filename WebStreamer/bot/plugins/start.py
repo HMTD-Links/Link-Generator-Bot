@@ -141,42 +141,6 @@ async def about(client, message):
     )
 
 ################################################################################################################################################################################################################################################
-# Get Movies with Links 👇🏻
-
-MOVIES = "Translation.MOVIES"
-
-MOVIES_BUTTONS = [
-            [
-                InlineKeyboardButton('Tamil Movies', url='https://t.me/Star_Moviess_Tamil_Bot?start=Tamil_Movies'),
-                InlineKeyboardButton('TV Shows', url='https://t.me/Star_Moviess_Tamil_Bot?start=TV_Shows')
-            ],
-            [
-                InlineKeyboardButton('Hollywood Movies', url='https://t.me/Star_Moviess_Tamil_Bot?start=Hollywood_Movies'),
-                InlineKeyboardButton('Collection Movies', url='https://t.me/Star_Moviess_Tamil_Bot?start=Collection_Movies')
-            ],
-            [
-                InlineKeyboardButton('Web Series', url='https://t.me/Star_Moviess_Tamil_Bot?start=Web_Series'),
-                InlineKeyboardButton('Cartoon Movies', url='https://t.me/Star_Moviess_Tamil_Bot?start=Cartoon_Movies')
-            ],
-            [
-                InlineKeyboardButton('📢 Update Channel', url='https://t.me/Star_Moviess_Tamil'),
-            ]
-        ]
-
-@StreamBot.on_message(filters.command("movies") & filters.private & filters.incoming)
-async def movies(client, message):
-    text = Translation.MOVIES
-    reply_markup = InlineKeyboardMarkup(MOVIES_BUTTONS)
-    await message.reply_text(
-        text = Translation.MOVIES.format(
-                mention = message.from_user.mention
-            ),
-        reply_markup=reply_markup,
-        disable_web_page_preview=True,
-        quote=True
-    )
-
-################################################################################################################################################################################################################################################
 
 REPLY_ERROR = """<b>Use This Command as a Reply to any Telegram Message Without any Spaces.</b>"""
 
@@ -202,7 +166,6 @@ async def opensettings(bot, cmd):
             ]
         ),
     )
-
 
 ################################################################################################################################################################################################################################################
 # Broadcast Message 
