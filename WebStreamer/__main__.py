@@ -57,7 +57,7 @@ async def cleanup():
     try:
         await server.cleanup()
         await StreamBot.stop()
-    except ConnectionError("Client is already terminated"):
+    except:
         pass
 
 if __name__ == "__main__":
