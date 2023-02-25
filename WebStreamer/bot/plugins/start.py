@@ -1,3 +1,4 @@
+
 from pyrogram import filters
 from pyrogram.types import Message
 
@@ -5,7 +6,7 @@ from WebStreamer.vars import Var
 from WebStreamer.bot import StreamBot
 
 from pyrogram import Client, filters, enums
-from WebStreamer.vers import ADMINS, AUTH_USERS
+from vers import ADMINS, AUTH_USERS
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, CallbackQuery
 from WebStreamer.translation import Translation
 from pyrogram.errors import MessageNotModified, UserIsBlocked, InputUserDeactivated, FloodWait
@@ -33,21 +34,22 @@ db = Database(DB_URL, DB_NAME)
 
 START = "Translation.START"
 
+MAIN_MENU_BUTTONS = [
+            [
+                InlineKeyboardButton('👨🏻‍💻 Creator', url='https://t.me/Star_Movies_Karthik')
+            ],
+            [
+                InlineKeyboardButton('😁 Help', callback_data="TUTORIAL_CALLBACK"),
+                InlineKeyboardButton('👥 Support', callback_data="GROUP_CALLBACK"),
+                InlineKeyboardButton('😎 About', callback_data="HELP_CALLBACK")
+            ],
+            [
+                InlineKeyboardButton('📢 Update Channel', url='https://t.me/Star_Moviess_Tamil')
+            ]
+        ]
+
 @StreamBot.on_message(filters.command("start") & filters.private)
-async def start(client, message):
-     MAIN_MENU_BUTTONS = [
-                        [
-                            InlineKeyboardButton('👨🏻‍💻 Creator', url='https://t.me/Star_Movies_Karthik')
-                        ],
-                        [
-                            InlineKeyboardButton('😁 Help', callback_data="TUTORIAL_CALLBACK"),
-                            InlineKeyboardButton('👥 Support', callback_data="GROUP_CALLBACK"),
-                            InlineKeyboardButton('😎 About', callback_data="HELP_CALLBACK")
-                        ],
-                        [
-                            InlineKeyboardButton('📢 Update Channel', url='https://t.me/Star_Moviess_Tamil')
-                        ]
-                      ]
+async def _(bot, cmd):
     await handle_user_status(bot, cmd)
 
     chat_id = message.from_user.id
@@ -63,6 +65,20 @@ async def start(client, message):
         else:
             logging.info(f"New User :- Name :- {message.from_user.first_name} ID :- {message.from_user.id}")
 
+@StreamBot.on_message(filters.command("start") & filters.private)
+async def start(_, m: Message):
+    if Var.ALLOWED_USERS and not ((str(m.from_user.id) in Var.ALLOWED_USERS) or (m.from_user.username in Var.ALLOWED_USERS)):
+        return await m.reply(
+            "You are not in the allowed list of users who can use me. \
+            Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.",
+            disable_web_page_preview=True, quote=True
+        )
+    await m.reply(
+        f'Hi {m.from_user.mention(style="md")}, Send me a file to get an instant stream link.'
+    )
+
+@StreamBot.on_message(filters.command("start") & filters.private)
+async def start(client, message):
     reply_markup = InlineKeyboardMarkup(MAIN_MENU_BUTTONS)
     await message.reply_text(
         text = Translation.START.format(
