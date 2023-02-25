@@ -35,8 +35,8 @@ async def start(_, m: Message):
             Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.",
             disable_web_page_preview=True, quote=True
         )
-    await m.reply(
-            f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+    await m.reply_text(
+            text=f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
     raise StopPropagation
