@@ -56,7 +56,7 @@ HELP_BUTTONS = [
 async def help(client, message):
     reply_markup = InlineKeyboardMarkup(HELP_BUTTONS)
     await message.reply(
-            "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
 
@@ -75,7 +75,7 @@ async def about(client, message):
     text = ABOUT
     reply_markup = InlineKeyboardMarkup(ABOUT_BUTTONS)
     await message.reply(
-            "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+            f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
 
@@ -91,7 +91,7 @@ async def about(client, message):
         reply_markup = InlineKeyboardMarkup(HELP_BUTTON)
         try:
             await query.edit_message(
-                "Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+                f"Hi 👋🏻 {m.from_user.mention}♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
@@ -109,7 +109,7 @@ async def about(client, message):
         reply_markup = InlineKeyboardMarkup(GROUP_BUTTONS)
         try:
             await query.edit_message_text(
-                "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+                f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
@@ -127,7 +127,7 @@ async def about(client, message):
         reply_markup = InlineKeyboardMarkup(TUTORIAL_BUTTONS)
         try:
             await query.edit_message(
-                "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+                f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
@@ -151,7 +151,7 @@ async def about(client, message):
         reply_markup = InlineKeyboardMarkup(START_BUTTONS)
         try:
             await query.edit_message(
-                "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+                f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
