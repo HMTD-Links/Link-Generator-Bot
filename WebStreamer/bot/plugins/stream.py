@@ -46,7 +46,7 @@ async def media_receive_handler(_, m: Message):
             ),
         )
     except errors.ButtonUrlInvalid:
-        await m.reply_cap(
+        await m.reply_text(
             text="<b>{}\n➠ Link :- [Click here]({})</b>\n\nshortened: {})".format(
                 cap, stream_link, short_link
             ),
