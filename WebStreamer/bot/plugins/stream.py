@@ -25,7 +25,7 @@ async def multi_files(bot, msg):
           await msg.reply(f"**Download Links **\n\n{text}")  
           links.clear()
       else : 
-          await seqsequence(bot, msg)
+          await multi_files(bot, msg)
     except Exception as error:
        await msg.reply(error)
         
