@@ -54,12 +54,8 @@ async def start_services():
     await idle()
 
 async def cleanup():
-    try:
-        await server.cleanup()
-        await StreamBot.stop()
-    except:
-        pass
-
+    await server.cleanup()
+    await StreamBot.stop()
 if __name__ == "__main__":
     try:
         loop.run_until_complete(start_services())
