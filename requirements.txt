@@ -5,13 +5,9 @@ pyrogram<=2.0.93
 datetime
 python-dotenv<=0.20.0
 aiofiles
-aiohttp<=3.8.4
+aiohttp<=3.8.1
 uvloop
 motor
-apscheduler
-requests
-psutil
-pyromod
 # --------- For Database -------- #
 pymongo
 dnspython
