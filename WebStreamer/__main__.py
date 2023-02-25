@@ -54,8 +54,11 @@ async def start_services():
     await idle()
 
 async def cleanup():
-    await server.cleanup()
-    await StreamBot.stop()
+    try:
+        await server.cleanup()
+        await StreamBot.stop()
+    except ConnectionError("Client is already terminated"):
+        pass
 
 if __name__ == "__main__":
     try:
