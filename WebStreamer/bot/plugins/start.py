@@ -81,8 +81,9 @@ async def about(client, message):
 
 ################################################################################################################################################################################################################################################
 # CallBackQuery For Star Message
-
-    elif query.data=="HELP_CALLBACK":
+@StreamBot.on_callback_query()
+async def about(client, query:callback_query))
+    if query.data=="HELP_CALLBACK":
         HELP_BUTTON = [
             [
                 InlineKeyboardButton("👈🏻 Back", callback_data="START_CALLBACK")
