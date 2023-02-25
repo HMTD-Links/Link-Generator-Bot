@@ -62,9 +62,15 @@ HELP_BUTTONS = [
 @StreamBot.on_message(filters.command("help") & filters.private & filters.incoming)
 async def help(client, message):
     reply_markup = InlineKeyboardMarkup(HELP_BUTTONS)
-    await message.reply(
-            f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
-            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+    mention = m.from_user.mention(style="md")
+    await message.reply_text(
+            text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+                mention
+            ),
+            quote=True,
+            parse_mode=ParseMode.HTML,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True
         )
 
 ################################################################################################################################################################################################################################################
