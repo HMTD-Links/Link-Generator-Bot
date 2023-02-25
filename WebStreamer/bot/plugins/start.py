@@ -30,6 +30,7 @@ MAIN_MENU_BUTTONS = [
 @StreamBot.on_message(filters.command("start") & filters.private)
 async def start(_, m: Message):
     reply_markup = InlineKeyboardMarkup(MAIN_MENU_BUTTONS)
+    mention = m.from_user.mention(style="md")
     if Var.ALLOWED_USERS and not ((str(m.from_user.id) in Var.ALLOWED_USERS) or (m.from_user.username in Var.ALLOWED_USERS)):
         return await m.reply(
             "You are not in the allowed list of users who can use me. \
@@ -37,7 +38,8 @@ async def start(_, m: Message):
             disable_web_page_preview=True, quote=True
         )
     await m.reply_text(
-            text="<b>Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+            text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+                mention
             ),
             quote=True,
             parse_mode=ParseMode.HTML,
