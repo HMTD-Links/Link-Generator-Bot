@@ -7,8 +7,31 @@ from WebStreamer.utils.file_properties import get_name, get_media_file_cap, get_
 from pyrogram.enums.parse_mode import ParseMode
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.file_id import FileId
+from pyromod import listen 
 
-@StreamBot.on_message(
+
+links = []
+@StreamBot.on_message(filters.private & filters.command("/seq"))
+async def sequence(bot, msg):
+    try : 
+      reciv = await StreamBot.ask(msg.chat.id,"hit /seq when you finish sending your files")
+      log_msg = await msg.forward(chat_id = VAR.BIN_CHANNEL)
+      stream_link = f"{Var.URL}{log_msg.id}/{quote_plus(get_name(m))}?hash={file_hash}"
+      links.append(stream_link)
+      if reciv.text =="/seq":
+          text = " "
+          for i in links :
+              text+=f"{i}\n\n"
+          await msg.reply(f"**Download Links **\n\n{text}")  
+          links.clear()
+      else : 
+          await seqsequence(bot, msg)
+    except Exception as error:
+       await msg.reply(error)
+        
+
+       
+@SreamBot.on_message(
     filters.private
     & (
         filters.document
