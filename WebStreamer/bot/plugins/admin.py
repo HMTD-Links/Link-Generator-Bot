@@ -14,8 +14,8 @@ from pyrogram.types import Message
 db = Database(Var.DATABASE_URL, Var.name)
 Broadcast_IDs = {}
 
-@StreamBot.on_message(filters.command("users") & filters.private )
-async def sts(c: Client, m: Message):
+@StreamBot.on_message(filters.command("stats") & filters.private )
+async def stats(c: Client, m: Message):
     user_id=m.from_user.id
     if user_id in Var.OWNER_ID:
         total_users = await db.total_users_count()
