@@ -91,7 +91,7 @@ async def about(client, message):
         reply_markup = InlineKeyboardMarkup(HELP_BUTTON)
         try:
             await query.edit_message_text(
-                "Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
+                f"Hi 👋🏻 {m.from_user.mention} ♥️,  Send me a File 📂 to get an Instant Stream link.",
             disable_web_page_preview=True, reply_markup=reply_markup, quote=True
         )
         except MessageNotModified:
