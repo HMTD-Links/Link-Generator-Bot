@@ -38,7 +38,7 @@ async def media_receive_handler(_, m: Message):
     try:
         await m.reply_text(
             text="<b>{} {} {}\n➠ Link :- [Click here]({})</b>\n<b>(<a href='{}'>Shortened</a>)</b>".format(
-                file_name, humanbytes(get_media_file_size(m)), cap, stream_link, short_link
+                file_name, file_size, cap, stream_link, short_link
             ),
             quote=True,
             parse_mode=ParseMode.HTML,
