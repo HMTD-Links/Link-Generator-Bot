@@ -73,11 +73,6 @@ async def start(_, m: Message):
             disable_web_page_preview=True, quote=True
         )
     await m.reply(
-        f'Hi {m.from_user.mention(style="md")}, Send me a file to get an instant stream link.'
-    )
-
-@StreamBot.on_message(filters.command("start") & filters.private)
-async def start(client, message):
     reply_markup = InlineKeyboardMarkup(MAIN_MENU_BUTTONS)
     await message.reply_text(
         text = Translation.START.format(
