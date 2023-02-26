@@ -9,7 +9,7 @@ import logging
 import pyromod
 from pyromod import listen
 from pyrogram import Client
-from . import StreamBot
+from WebStreamer.bot import StreamBot
 
 logger = logging.getLogger("bot")
 
