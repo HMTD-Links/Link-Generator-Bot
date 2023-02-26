@@ -9,6 +9,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.file_id import FileId
 from pyromod import listen 
 from WebStreamer.bot import StreamBot
+from WebStreamer.utils.human_readable import humanbytes
 
 links = []
 @StreamBot.on_message(filters.private & filters.command("multi"))
