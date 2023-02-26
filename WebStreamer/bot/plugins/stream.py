@@ -32,7 +32,7 @@ async def multi_files(bot, msg):
         
 
        
-@StreamBot.on_message(
+@SreamBot.on_message(
     filters.private
     & (
         filters.document
@@ -56,7 +56,7 @@ async def media_receive_handler(_, m: Message):
     cap = get_media_file_cap(log_msg)
     file_name = get_name(log_msg)
     file_size = humanbytes(get_media_file_size(m))
-    logger.info(f"Generated link :- {stream_link} for {m.from_user.first_name}")
+    logging.info(f"Generated link :- {stream_link} for {m.from_user.first_name}")
     try:
         await m.reply_text(
             text="<b>{} {} {}\n➠ Link :- [Click here]({})</b>\n<b>(<a href='{}'>Shortened</a>)</b>".format(
