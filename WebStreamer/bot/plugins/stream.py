@@ -32,7 +32,7 @@ async def multi_files(bot, msg):
         
 
        
-@SreamBot.on_message(
+@StreamBot.on_message(
     filters.private
     & (
         filters.document
