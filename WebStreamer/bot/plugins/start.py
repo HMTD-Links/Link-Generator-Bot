@@ -74,7 +74,7 @@ HELP_BUTTONS = [
 @StreamBot.on_message(filters.command("help") & filters.private & filters.incoming)
 async def help(client, message):
     reply_markup = InlineKeyboardMarkup(HELP_BUTTONS)
-    mention = m.from_user.mention(style="md")
+    mention = m.from_user.mention
     await message.reply_text(
             text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
                 mention
@@ -97,7 +97,7 @@ ABOUT_BUTTONS = [
 
 @StreamBot.on_message(filters.command("about") & filters.private & filters.incoming)
 async def about(client, message):
-    mention = m.from_user.mention(style="md")
+    mention = m.from_user.mention
     reply_markup = InlineKeyboardMarkup(ABOUT_BUTTONS)
     await message.reply_text(
             text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
@@ -121,7 +121,7 @@ async def callback_query(client: Client, query: CallbackQuery):
             ]
             ]
         reply_markup = InlineKeyboardMarkup(HELP_BUTTON)
-        mention = m.from_user.mention(style="md")
+        mention = m.from_user.mention
         try:
             await query.edit_message_text(
                 text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
@@ -145,7 +145,7 @@ async def callback_query(client: Client, query: CallbackQuery):
             ]
             ]
         reply_markup = InlineKeyboardMarkup(GROUP_BUTTONS)
-        mention = m.from_user.mention(style="md")
+        mention = m.from_user.mention
         try:
             await query.edit_message_text(
                 text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
@@ -169,7 +169,7 @@ async def callback_query(client: Client, query: CallbackQuery):
             ]
             ]
         reply_markup = InlineKeyboardMarkup(TUTORIAL_BUTTONS)
-        mention = m.from_user.mention(style="md")
+        mention = m.from_user.mention
         try:
             await query.edit_message_text(
                 text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
@@ -199,7 +199,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         ]
 
         reply_markup = InlineKeyboardMarkup(START_BUTTONS)
-        mention = m.from_user.mention(style="md")
+        mention = m.from_user.mention
         try:
             await query.edit_message_text(
                 text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
