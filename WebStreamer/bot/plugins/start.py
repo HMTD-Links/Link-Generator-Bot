@@ -85,11 +85,16 @@ ABOUT_BUTTONS = [
 
 @StreamBot.on_message(filters.command("about") & filters.private & filters.incoming)
 async def about(client, message):
-    text = ABOUT
+    mention = m.from_user.mention(style="md")
     reply_markup = InlineKeyboardMarkup(ABOUT_BUTTONS)
-    await message.reply(
-            f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
-            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+    await message.reply_text(
+            text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+                mention
+            ),
+            quote=True,
+            parse_mode=ParseMode.HTML,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True
         )
 
 ################################################################################################################################################################################################################################################
@@ -104,10 +109,16 @@ async def callback_query(client: Client, query: CallbackQuery):
             ]
             ]
         reply_markup = InlineKeyboardMarkup(HELP_BUTTON)
+        mention = m.from_user.mention(style="md")
         try:
-            await query.edit_message(
-                f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
-            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+            await query.edit_message_text(
+                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+                    mention
+            ),
+            quote=True,
+            parse_mode=ParseMode.HTML,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True
         )
         except MessageNotModified:
             pass
@@ -122,10 +133,16 @@ async def callback_query(client: Client, query: CallbackQuery):
             ]
             ]
         reply_markup = InlineKeyboardMarkup(GROUP_BUTTONS)
+        mention = m.from_user.mention(style="md")
         try:
             await query.edit_message_text(
-                f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
-            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+                    mention
+            ),
+            quote=True,
+            parse_mode=ParseMode.HTML,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True
         )
         except MessageNotModified:
             pass    
@@ -140,10 +157,16 @@ async def callback_query(client: Client, query: CallbackQuery):
             ]
             ]
         reply_markup = InlineKeyboardMarkup(TUTORIAL_BUTTONS)
+        mention = m.from_user.mention(style="md")
         try:
-            await query.edit_message(
-                f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
-            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+            await query.edit_message_text(
+                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+                    mention
+            ),
+            quote=True,
+            parse_mode=ParseMode.HTML,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True
         )
         except MessageNotModified:
             pass      
@@ -164,10 +187,16 @@ async def callback_query(client: Client, query: CallbackQuery):
         ]
 
         reply_markup = InlineKeyboardMarkup(START_BUTTONS)
+        mention = m.from_user.mention(style="md")
         try:
-            await query.edit_message(
-                f"Hi 👋🏻 {m.from_user.mention(style="md")} ♥️,  Send me a File 📂 to get an Instant Stream link.",
-            disable_web_page_preview=True, reply_markup=reply_markup, quote=True
+            await query.edit_message_text(
+                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+                    mention
+            ),
+            quote=True,
+            parse_mode=ParseMode.HTML,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True
         )
         except MessageNotModified:
             pass    
