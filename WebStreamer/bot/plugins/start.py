@@ -8,6 +8,7 @@ from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, 
 from WebStreamer.vars import Var 
 from WebStreamer.bot import StreamBot
 from pyrogram.enums.parse_mode import ParseMode
+from pyrogram.errors import MessageNotModified, UserIsBlocked, InputUserDeactivated, FloodWait
 import os
 import time
 import string
