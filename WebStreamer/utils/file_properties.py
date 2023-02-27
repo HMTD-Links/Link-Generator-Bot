@@ -94,8 +94,9 @@ def get_media_file_size(m):
     return getattr(media, "file_size", 0)
 
 def get_media_file_cap(media_msg: Message) -> str:
-    media = get_media_from_message(media_msg)
-    return getattr(media, "cap", "")
+    if isinstance(media_msg, Message):
+        media = get_media_from_message(media_msg)
+        cap = getattr(media, "cap", "")
 
     elif isinstance(media_msg, FileId):
         cap = getattr(media_msg, "cap", "")
