@@ -97,4 +97,27 @@ def get_media_file_cap(media_msg: Message) -> str:
     media = get_media_from_message(media_msg)
     return getattr(media, "cap", "")
 
+elif isinstance(media_msg, FileId):
+        cap = getattr(media_msg, "cap", "")
 
+    if not cap:
+        if isinstance(media_msg, Message) and media_msg.media:
+            media_type = media_msg.media.value
+        elif media_msg.file_type:
+            media_type = media_msg.file_type.name.lower()
+        else:
+            media_type = "file"
+
+        formats = {
+            "photo": "jpg", "audio": "mp3", "voice": "ogg",
+            "video": "mp4", "animation": "mp4", "video_note": "mp4",
+            "sticker": "webp"
+        }
+
+        ext = formats.get(media_type)
+        ext = "." + ext if ext else ""
+
+        date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        cap = f"{media_type}-{date}{ext}"
+
+    return cap
