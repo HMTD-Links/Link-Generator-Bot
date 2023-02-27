@@ -20,8 +20,13 @@ from handlers.broadcast import broadcast
 from handlers.check_user import handle_user_status
 from handlers.database import Database
 from pyrogram.types import Message
-db = Database(Var.DATABASE_URL, Var.name)
-Broadcast_IDs = {}
+LOG_CHANNEL = Var.LOG_CHANNEL
+AUTH_USERS = Var.AUTH_USERS
+DB_URL = Var.DB_URL
+DB_NAME = Var.DB_NAME
+
+db = Database(DB_URL, DB_NAME)
+
 
 ################################################################################################################################################################################################################################################
 # Start Command
@@ -40,6 +45,21 @@ MAIN_MENU_BUTTONS = [
             ]
         ]
 
+@StreamBot.on_message(filters.private)
+async def _(bot, cmd):
+    await handle_user_status(bot, cmd)
+    chat_id = message.from_user.id
+    if not await db.is_user_exist(chat_id):
+        data = await client.get_me()
+        BOT_USERNAME = data.username
+        await db.add_user(chat_id)
+        if LOG_CHANNEL:
+            await client.send_message(
+                LOG_CHANNEL,
+                f"**#New_User :- \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id})\n ID :- {message.from_user.id} Started @{BOT_USERNAME} !!**",
+            )
+        else:
+            logging.info(f"New User :- Name :- {message.from_user.first_name} ID :- {message.from_user.id}")
 
 @StreamBot.on_message(filters.command("start") & filters.private)
 async def start(_, m: Message):
@@ -230,7 +250,7 @@ REPLY_ERROR = """<b>Use This Command as a Reply to any Telegram Message Without 
 ################################################################################################################################################################################################################################################
 # Broadcast Message 
 
-@Star_Moviess_Tamil.on_message(filters.private & filters.command("broadcast"))
+@StreamBot.on_message(filters.private & filters.command("broadcast"))
 async def broadcast_handler_open(_, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
@@ -243,7 +263,7 @@ async def broadcast_handler_open(_, m):
 ################################################################################################################################################################################################################################################
 # Total Users in Database 📂
 
-@Star_Moviess_Tamil.on_message(filters.private & filters.command("stats"))
+@StreamBot.on_message(filters.private & filters.command("stats"))
 async def sts(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
@@ -256,7 +276,7 @@ async def sts(c, m):
 ################################################################################################################################################################################################################################################
 # Ban The User
 
-@Star_Moviess_Tamil.on_message(filters.private & filters.command("ban_user"))
+@StreamBot.on_message(filters.private & filters.command("ban_user"))
 async def ban(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
@@ -298,7 +318,7 @@ async def ban(c, m):
 ################################################################################################################################################################################################################################################
 # Unban User
 
-@Star_Moviess_Tamil.on_message(filters.private & filters.command("unban_user"))
+@StreamBot.on_message(filters.private & filters.command("unban_user"))
 async def unban(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
@@ -335,7 +355,7 @@ async def unban(c, m):
 ################################################################################################################################################################################################################################################
 # Banned Users
 
-@Star_Moviess_Tamil.on_message(filters.private & filters.command("banned_users"))
+@StreamBot.on_message(filters.private & filters.command("banned_users"))
 async def _banned_usrs(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
