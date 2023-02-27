@@ -16,7 +16,7 @@ links = []
 async def multi_files(bot, msg):
     try : 
       reciv = await bot.ask(msg.chat.id,"hit /multi when you finish sending your files")
-      log_msg = await msg.forward(chat_id = VAR.BIN_CHANNEL)
+      log_msg = await msg.forward(chat_id=VAR.BIN_CHANNEL)
       stream_link = f"{Var.URL}{log_msg.id}/{quote_plus(get_name(m))}?hash={file_hash}"
       links.append(stream_link)
       if reciv.text =="/multi":
