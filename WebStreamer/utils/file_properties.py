@@ -28,7 +28,6 @@ async def get_file_ids(client: Client, chat_id: int, message_id: int) -> Optiona
     setattr(file_id, "file_size", getattr(media, "file_size", 0))
     setattr(file_id, "mime_type", getattr(media, "mime_type", ""))
     setattr(file_id, "file_name", getattr(media, "file_name", ""))
-    setattr(file_id, "file_caption", getattr(media, "file_caption", ""))
     setattr(file_id, "unique_id", file_unique_id)
     return file_id
 
@@ -93,33 +92,3 @@ def get_name(media_msg: Union[Message, FileId]) -> str:
 def get_media_file_size(m):
     media = get_media_from_message(m)
     return getattr(media, "file_size", 0)
-
-def get_media_file_caption(media_msg: Message) -> str:
-    if isinstance(media_msg, Message):
-        media = get_media_from_message(media_msg)
-        file_caption = getattr(media, "file_caption", "")
-
-    elif isinstance(media_msg, FileId):
-        file_caption = getattr(media_msg, "file_caption", "")
-
-    if not file_caption:
-        if isinstance(media_msg, Message) and media_msg.media:
-            media_type = media_msg.media.value
-        elif media_msg.file_type:
-            media_type = media_msg.file_type.name.lower()
-        else:
-            media_type = "file"
-
-        formats = {
-            "photo": "jpg", "audio": "mp3", "voice": "ogg",
-            "video": "mp4", "animation": "mp4", "video_note": "mp4",
-            "sticker": "webp"
-        }
-
-        ext = formats.get(media_type)
-        ext = "." + ext if ext else ""
-
-        date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        cap = f"{media_type}-{date}{ext}"
-
-    return file_caption
