@@ -36,7 +36,7 @@ async def multi_files(bot, m: Message):
           await m.reply(f"**Download Links **\n{file_caption}\n\n{text}")  
           links.clear()
       else : 
-          await multi_files(bot, m: Message)
+          await multi_files(bot, m)
     except Exception as error:
        await m.reply(error)
         
