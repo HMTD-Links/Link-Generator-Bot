@@ -75,7 +75,7 @@ async def media_receive_handler(_, m: Message):
             quote=True,
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("Download Link", url=stream_link)], [InlineKeyboardButton("Shortened Link", url=short_link)], [InlineKeyboardButton("📢 Update Channel", url=https://t.me/Star_Moviess_Tamil)]]
+                [[InlineKeyboardButton("Download Link", url=stream_link)], [InlineKeyboardButton("Shortened Link", url=short_link)], [InlineKeyboardButton("📢 Update Channel", url="https://t.me/Star_Moviess_Tamil")]]
             ),
         )
     except errors.ButtonUrlInvalid:
