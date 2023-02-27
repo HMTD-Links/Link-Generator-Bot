@@ -21,7 +21,6 @@ class Var(object):
     )  # you NEED to use a CHANNEL when you're using MULTI_CLIENT
     PORT = int(environ.get("PORT", 8080))
     BIND_ADDRESS = str(environ.get("WEB_SERVER_BIND_ADDRESS", "0.0.0.0"))
-    OWNER_ID = set(int(x) for x in os.environ.get("OWNER_ID", "1391556668").split())  
     PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
     HAS_SSL = str(environ.get("HAS_SSL", "0").lower()) in ("1", "true", "t", "yes", "y")
     NO_PORT = str(environ.get("NO_PORT", "0").lower()) in ("1", "true", "t", "yes", "y")
@@ -38,7 +37,6 @@ class Var(object):
     ALLOWED_USERS = [x.strip("@ ") for x in str(environ.get("ALLOWED_USERS", "1391556668 5162208212") or "").split(",") if x.strip("@ ")]
 DB_URL = environ.get('DATABASE_URI', "mongodb+srv://karthikgaming:KarthikUK007@cluster0.ach7nle.mongodb.net/?retryWrites=true&w=majority")
 DB_NAME = environ.get('DATABASE_NAME', "Cluster0")
-ADMINS = int(os.environ.get("ADMINS", "1391556668"))
 LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001342411240"))
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1391556668").split())
 BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
