@@ -24,12 +24,16 @@ async def multi_files(bot, msg):
       reciv = await bot.ask(msg.chat.id,"**Hit /multi When You Finish Sending Your Files 📂**")
       log_msg = await msg.forward(chat_id=VAR.BIN_CHANNEL)
       stream_link = f"{Var.URL}{log_msg.id}/{quote_plus(get_name(m))}?hash={file_hash}"
+      file_hash = get_hash(log_msg, Var.HASH_LENGTH)
+      file_caption = m.caption
+      file_name = get_name(log_msg)
+      file_size = humanbytes(get_media_file_size(m))
       links.append(stream_link)
       if reciv.text =="/multi":
           text = " "
           for i in links :
               text+=f"{i}\n\n"
-          await msg.reply(f"**Download Links **\n\n{text}")  
+          await msg.reply(f"**Download Links **\n{file_caption}\n\n{text}")  
           links.clear()
       else : 
           await multi_files(bot, msg)
