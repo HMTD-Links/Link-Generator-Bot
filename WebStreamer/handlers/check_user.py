@@ -1,13 +1,13 @@
 import datetime
 
-import config
+from vars import Var
 import logging
 
-from handlers.database import Database
+from WebStreamer.handlers.database import Database
 
-DB_URL = config.DB_URL
-DB_NAME = config.DB_NAME
-LOG_CHANNEL = config.LOG_CHANNEL
+DB_URL = Var.DB_URL
+DB_NAME = Var.DB_NAME
+LOG_CHANNEL = Var.LOG_CHANNEL
 
 db = Database(DB_URL, DB_NAME)
 
