@@ -28,6 +28,7 @@ async def get_file_ids(client: Client, chat_id: int, message_id: int) -> Optiona
     setattr(file_id, "file_size", getattr(media, "file_size", 0))
     setattr(file_id, "mime_type", getattr(media, "mime_type", ""))
     setattr(file_id, "file_name", getattr(media, "file_name", ""))
+    setattr(file_id, "file_caption", getattr(media, "file_caption", ""))
     setattr(file_id, "unique_id", file_unique_id)
     return file_id
 
@@ -93,15 +94,15 @@ def get_media_file_size(m):
     media = get_media_from_message(m)
     return getattr(media, "file_size", 0)
 
-def get_media_file_cap(media_msg: Message) -> str:
+def get_media_file_caption(media_msg: Message) -> str:
     if isinstance(media_msg, Message):
         media = get_media_from_message(media_msg)
-        cap = getattr(media, "cap", "")
+        file_caption = getattr(media, "file_caption", "")
 
     elif isinstance(media_msg, FileId):
-        cap = getattr(media_msg, "cap", "")
+        file_caption = getattr(media_msg, "file_caption", "")
 
-    if not cap:
+    if not file_caption:
         if isinstance(media_msg, Message) and media_msg.media:
             media_type = media_msg.media.value
         elif media_msg.file_type:
@@ -121,4 +122,4 @@ def get_media_file_cap(media_msg: Message) -> str:
         date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         cap = f"{media_type}-{date}{ext}"
 
-    return cap
+    return file_caption
