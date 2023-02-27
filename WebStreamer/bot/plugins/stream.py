@@ -21,7 +21,7 @@ async def multi_files(bot, msg):
             disable_web_page_preview=True, quote=True
         )
     try : 
-      reciv = await bot.ask(msg.chat.id,"**hit /multi when you finish sending your Files 📂**")
+      reciv = await bot.ask(msg.chat.id,"**Hit /multi When You Finish Sending Your Files 📂**")
       log_msg = await msg.forward(chat_id=VAR.BIN_CHANNEL)
       stream_link = f"{Var.URL}{log_msg.id}/{quote_plus(get_name(m))}?hash={file_hash}"
       links.append(stream_link)
@@ -65,19 +65,19 @@ async def media_receive_handler(_, m: Message):
     logging.info(f"Generated link :- {stream_link} for {m.from_user.first_name}")
     try:
         await m.reply_text(
-            text="<b>File Name :-{}\nFile Size :-{}\nFile Captain :-{}\n➠ Link :- [Click here]({})</b>\n<b>(<a href='{}'>Shortened</a>)</b>".format(
+            text="<b>File Name :- {}\nFile Size :- {}\nFile Captain :- {}\n➠ Link :- [Click here]({})</b>\n<b>(<a href='{}'>Shortened</a>)</b>".format(
                 file_name, file_size, file_caption, stream_link, short_link
             ),
             quote=True,
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("Download Link", url=stream_link)]]
+                [[InlineKeyboardButton("Download Link", url=stream_link)], [InlineKeyboardButton("Shortened Link", url=short_link)], [InlineKeyboardButton("📢 Update Channel", url=https://t.me/Star_Moviess_Tamil)]]
             ),
         )
     except errors.ButtonUrlInvalid:
         await m.reply_text(
-            text="<b>{}\n➠ Link :- [Click here]({})</b>\n\nshortened: {})".format(
-                file_caption, stream_link, short_link
+            text="<b>File Name :- {}\nFile Size :- {}\nFile Captain :- {}\n➠ Link :- [Click here]({})</b>\n<b>(<a href='{}'>Shortened</a>)</b>".format(
+                file_name, file_size, file_caption, stream_link, short_link
             ),
             quote=True,
             parse_mode=ParseMode.HTML,
