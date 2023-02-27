@@ -36,4 +36,9 @@ class Var(object):
     DEBUG = str(environ.get("DEBUG", "0").lower()) in ("1", "true", "t", "yes", "y")
     USE_SESSION_FILE = str(environ.get("USE_SESSION_FILE", "0").lower()) in ("1", "true", "t", "yes", "y")
     ALLOWED_USERS = [x.strip("@ ") for x in str(environ.get("ALLOWED_USERS", "1391556668 5162208212") or "").split(",") if x.strip("@ ")]
-    DATABASE_URL = str(getenv('DATABASE_URL', 'mongodb+srv://karthikgaming:KarthikUK007@cluster0.ach7nle.mongodb.net/?retryWrites=true&w=majority'))
+DB_URL = environ.get('DATABASE_URI', "mongodb+srv://karthikgaming:KarthikUK007@cluster0.ach7nle.mongodb.net/?retryWrites=true&w=majority")
+DB_NAME = environ.get('DATABASE_NAME', "Cluster0")
+ADMINS = int(os.environ.get("ADMINS", "1391556668"))
+LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001342411240"))
+AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1391556668").split())
+BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
