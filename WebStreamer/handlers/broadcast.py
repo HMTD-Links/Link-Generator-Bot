@@ -16,11 +16,9 @@ from pyrogram.errors import (
 
 from WebStreamer.vars import Var
 
-import vars
-
 broadcast_ids = {}
 
-BROADCAST_AS_COPY = vars.BROADCAST_AS_COPY
+BROADCAST_AS_COPY = Var.BROADCAST_AS_COPY
 
 
 async def send_msg(user_id, message):
