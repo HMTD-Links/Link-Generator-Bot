@@ -13,19 +13,19 @@ from WebStreamer.utils.human_readable import humanbytes
 
 links = []
 @StreamBot.on_message(filters.private & filters.command("multi"))
-async def multi_files(bot, m: Message):
-    if Var.ALLOWED_USERS and not ((str(m.from_user.id) in Var.ALLOWED_USERS) or (m.from_user.username in Var.ALLOWED_USERS)):
-        return await m.reply(
+async def multi_files(bot, msg):
+    if Var.ALLOWED_USERS and not ((str(msg.from_user.id) in Var.ALLOWED_USERS) or (msg.from_user.username in Var.ALLOWED_USERS)):
+        return await msg.reply(
             "<b>You are not in the allowed list of users who can use me. \
             Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.</b>",
             disable_web_page_preview=True, quote=True
         )
     try : 
-      reciv = await bot.ask(m.chat.id,"**Hit /multi When You Finish Sending Your Files 📂**")
-      log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
+      reciv = await bot.ask(msg.chat.id,"**Hit /multi When You Finish Sending Your Files 📂**")
+      log_msg = await msg.forward(chat_id=Var.BIN_CHANNEL)
       stream_link = f"{Var.URL}{log_msg.id}/{quote_plus(get_name(m))}?hash={file_hash}"
       file_hash = get_hash(log_msg, Var.HASH_LENGTH)
-      file_caption = m.caption
+      file_caption = msg.caption
       file_name = get_name(log_msg)
       file_size = humanbytes(get_media_file_size(m))
       links.append(stream_link)
@@ -33,12 +33,12 @@ async def multi_files(bot, m: Message):
           text = " "
           for i in links :
               text+=f"{i}\n\n"
-          await m.reply(f"**Download Links **\n{file_caption}\n\n{text}")  
+          await msg.reply(f"**Download Links **\n{file_caption}\n\n{text}")  
           links.clear()
       else : 
-          await multi_files(bot, m)
+          await multi_files(bot, msg)
     except Exception as error:
-       await m.reply(error)
+       await msg.reply(error)
         
 
        
