@@ -48,6 +48,7 @@ MAIN_MENU_BUTTONS = [
 @StreamBot.on_message(filters.private)
 async def _(bot, cmd):
     await handle_user_status(bot, cmd)
+
     chat_id = message.from_user.id
     if not await db.is_user_exist(chat_id):
         data = await client.get_me()
