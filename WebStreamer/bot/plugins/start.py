@@ -16,9 +16,9 @@ import random
 import asyncio
 import aiofiles
 import datetime
-from handlers.broadcast import broadcast
-from handlers.check_user import handle_user_status
-from handlers.database import Database
+from WebStreamer.handlers.broadcast import broadcast
+from WebStreamer.handlers.check_user import handle_user_status
+from WebStreamer.handlers.database import Database
 from pyrogram.types import Message
 LOG_CHANNEL = Var.LOG_CHANNEL
 AUTH_USERS = Var.AUTH_USERS
