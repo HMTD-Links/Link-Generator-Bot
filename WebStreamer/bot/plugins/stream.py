@@ -13,16 +13,16 @@ from WebStreamer.utils.human_readable import humanbytes
 
 links = []
 @StreamBot.on_message(filters.private & filters.command("multi"))
-async def multi_files(bot, msg):
-    if Var.ALLOWED_USERS and not ((str(msg.from_user.id) in Var.ALLOWED_USERS) or (msg.from_user.username in Var.ALLOWED_USERS)):
-        return await msg.reply(
+async def multi_files(bot, m: Message):
+    if Var.ALLOWED_USERS and not ((str(m.from_user.id) in Var.ALLOWED_USERS) or (m.from_user.username in Var.ALLOWED_USERS)):
+        return await m.reply(
             "<b>You are not in the allowed list of users who can use me. \
             Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.</b>",
             disable_web_page_preview=True, quote=True
         )
     try : 
-      reciv = await bot.ask(msg.chat.id,"**Hit /multi When You Finish Sending Your Files 📂**")
-      log_msg = await msg.forward(chat_id=VAR.BIN_CHANNEL)
+      reciv = await bot.ask(m.chat.id,"**Hit /multi When You Finish Sending Your Files 📂**")
+      log_msg = await m.forward(chat_id=VAR.BIN_CHANNEL)
       stream_link = f"{Var.URL}{log_msg.id}/{quote_plus(get_name(m))}?hash={file_hash}"
       file_hash = get_hash(log_msg, Var.HASH_LENGTH)
       file_caption = m.caption
@@ -33,12 +33,12 @@ async def multi_files(bot, msg):
           text = " "
           for i in links :
               text+=f"{i}\n\n"
-          await msg.reply(f"**Download Links **\n{file_caption}\n\n{text}")  
+          await m.reply(f"**Download Links **\n{file_caption}\n\n{text}")  
           links.clear()
       else : 
-          await multi_files(bot, msg)
+          await multi_files(bot, m: Message)
     except Exception as error:
-       await msg.reply(error)
+       await m.reply(error)
         
 
        
@@ -75,7 +75,7 @@ async def media_receive_handler(_, m: Message):
             quote=True,
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("Download Link", url=stream_link)], [InlineKeyboardButton("Shortened Link", url=short_link)], [InlineKeyboardButton("📢 Update Channel", url="https://t.me/Star_Moviess_Tamil")]]
+                [[InlineKeyboardButton("📥 Download Link", url=stream_link)], [InlineKeyboardButton("🔗 Shortened Link", url=short_link)], [InlineKeyboardButton("🔥 Update Channel", url="https://t.me/Star_Moviess_Tamil")]]
             ),
         )
     except errors.ButtonUrlInvalid:
