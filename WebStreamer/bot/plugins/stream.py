@@ -26,8 +26,6 @@ async def multi_files(bot, msg):
       stream_link = f"{Var.URL}{log_msg.id}/{quote_plus(get_name(m))}?hash={file_hash}"
       file_hash = get_hash(log_msg, Var.HASH_LENGTH)
       file_caption = msg.caption
-      file_name = get_name(log_msg)
-      file_size = humanbytes(get_media_file_size(m))
       links.append(stream_link)
       if reciv.text =="/multi":
           text = " "
