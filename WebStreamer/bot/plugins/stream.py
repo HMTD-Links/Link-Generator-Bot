@@ -14,6 +14,12 @@ from WebStreamer.utils.human_readable import humanbytes
 links = []
 @StreamBot.on_message(filters.private & filters.command("multi"))
 async def multi_files(bot, msg):
+    if Var.ALLOWED_USERS and not ((str(msg.from_user.id) in Var.ALLOWED_USERS) or (msg.from_user.username in Var.ALLOWED_USERS)):
+        return await msg.reply(
+            "<b>You are not in the allowed list of users who can use me. \
+            Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.</b>",
+            disable_web_page_preview=True, quote=True
+        )
     try : 
       reciv = await bot.ask(msg.chat.id,"**hit /multi when you finish sending your Files 📂**")
       log_msg = await msg.forward(chat_id=VAR.BIN_CHANNEL)
