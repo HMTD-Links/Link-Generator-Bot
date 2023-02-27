@@ -3,7 +3,7 @@ from pyrogram import filters, errors
 from WebStreamer.vars import Var
 from urllib.parse import quote_plus
 from WebStreamer.utils import get_hash, get_name
-from WebStreamer.utils.file_properties import get_name, get_media_file_caption, get_media_file_size, get_media_from_message
+from WebStreamer.utils.file_properties import get_name, get_media_file_size
 from pyrogram.enums.parse_mode import ParseMode
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.file_id import FileId
