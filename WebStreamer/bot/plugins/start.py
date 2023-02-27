@@ -46,12 +46,12 @@ async def start(_, m: Message):
     mention = m.from_user.mention(style="md")
     if Var.ALLOWED_USERS and not ((str(m.from_user.id) in Var.ALLOWED_USERS) or (m.from_user.username in Var.ALLOWED_USERS)):
         return await m.reply(
-            "You are not in the allowed list of users who can use me. \
-            Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.",
+            "<b>You are not in the allowed list of users who can use me. \
+            Check <a href='https://github.com/EverythingSuckz/TG-FileStreamBot#optional-vars'>this link</a> for more info.</b>",
             disable_web_page_preview=True, quote=True
         )
     await m.reply_text(
-            text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+            text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
                 mention
             ),
             quote=True,
@@ -77,7 +77,7 @@ async def help(client, message):
     reply_markup = InlineKeyboardMarkup(HELP_BUTTONS)
     mention = message.from_user.mention
     await message.reply_text(
-            text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+            text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
                 mention
             ),
             quote=True,
@@ -101,7 +101,7 @@ async def about(client, message):
     mention = message.from_user.mention
     reply_markup = InlineKeyboardMarkup(ABOUT_BUTTONS)
     await message.reply_text(
-            text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+            text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
                 mention
             ),
             quote=True,
@@ -125,7 +125,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         mention = query.from_user.mention
         try:
             await query.edit_message_text(
-                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
                     mention
             ),
             quote=True,
@@ -149,7 +149,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         mention = query.from_user.mention
         try:
             await query.edit_message_text(
-                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
                     mention
             ),
             quote=True,
@@ -173,7 +173,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         mention = query.from_user.mention
         try:
             await query.edit_message_text(
-                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
                     mention
             ),
             quote=True,
@@ -203,7 +203,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         mention = query.from_user.mention
         try:
             await query.edit_message_text(
-                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.<b>".format(
+                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
                     mention
             ),
             quote=True,
@@ -222,7 +222,7 @@ async def stats(c: Client, m: Message):
     user_id=m.from_user.id
     if user_id in Var.OWNER_ID:
         total_users = await db.total_users_count()
-        await m.reply_text(text=f"Total Users in DB: {total_users}", quote=True)
+        await m.reply_text(text=f"<b>Total Users in DB: {total_users}</b>", quote=True)
 
 ################################################################################################################################################################################################################################################
 # Broadcast 💌 a Message to All Users        
@@ -231,7 +231,7 @@ async def stats(c: Client, m: Message):
 async def broadcast_(c, m):
     user_id=m.from_user.id
     out = await m.reply_text(
-            text=f"Broadcast initiated! You will be notified with log file when all the users are notified."
+            text=f"<b>Broadcast initiated! You will be notified with log file when all the users are notified.</b>"
     )
     all_users = await db.get_all_users()
     broadcast_msg = m.reply_to_message
@@ -282,13 +282,13 @@ async def broadcast_(c, m):
     await out.delete()
     if failed == 0:
         await m.reply_text(
-            text=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            text=f"<b>broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.</b>",
             quote=True
         )
     else:
         await m.reply_document(
             document='broadcast.txt',
-            caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            caption=f"<b>broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.</b>",
             quote=True
         )
     os.remove('broadcast.txt')
