@@ -128,7 +128,6 @@ async def callback_query(client: Client, query: CallbackQuery):
                 text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
                     mention
             ),
-            quote=True,
             parse_mode=ParseMode.HTML,
             reply_markup=reply_markup,
             disable_web_page_preview=True
@@ -152,7 +151,6 @@ async def callback_query(client: Client, query: CallbackQuery):
                 text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
                     mention
             ),
-            quote=True,
             parse_mode=ParseMode.HTML,
             reply_markup=reply_markup,
             disable_web_page_preview=True
@@ -176,7 +174,6 @@ async def callback_query(client: Client, query: CallbackQuery):
                 text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
                     mention
             ),
-            quote=True,
             parse_mode=ParseMode.HTML,
             reply_markup=reply_markup,
             disable_web_page_preview=True
@@ -206,7 +203,6 @@ async def callback_query(client: Client, query: CallbackQuery):
                 text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
                     mention
             ),
-            quote=True,
             parse_mode=ParseMode.HTML,
             reply_markup=reply_markup,
             disable_web_page_preview=True
