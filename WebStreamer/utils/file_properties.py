@@ -97,7 +97,7 @@ def get_media_file_cap(media_msg: Message) -> str:
     media = get_media_from_message(media_msg)
     return getattr(media, "cap", "")
 
-elif isinstance(media_msg, FileId):
+    elif isinstance(media_msg, FileId):
         cap = getattr(media_msg, "cap", "")
 
     if not cap:
