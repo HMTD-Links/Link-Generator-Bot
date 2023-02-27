@@ -14,7 +14,7 @@ from pyrogram.errors import (
     UserIsBlocked,
 )
 
-from vars import Var
+from WebStreamer.vars import Var
 
 broadcast_ids = {}
 
