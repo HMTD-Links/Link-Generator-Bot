@@ -1,6 +1,6 @@
 import datetime
 
-from vars import Var
+from WebStreamer.vars import Var
 import logging
 
 from WebStreamer.handlers.database import Database
