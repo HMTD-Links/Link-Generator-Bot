@@ -11,8 +11,3 @@ motor
 # --------- For Database -------- #
 pymongo
 dnspython
-
-
- 
-
-
