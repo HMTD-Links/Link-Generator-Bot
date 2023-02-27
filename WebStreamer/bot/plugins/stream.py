@@ -22,7 +22,7 @@ async def multi_files(bot, m: Message):
         )
     try : 
       reciv = await bot.ask(m.chat.id,"**Hit /multi When You Finish Sending Your Files 📂**")
-      log_msg = await m.forward(chat_id=VAR.BIN_CHANNEL)
+      log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
       stream_link = f"{Var.URL}{log_msg.id}/{quote_plus(get_name(m))}?hash={file_hash}"
       file_hash = get_hash(log_msg, Var.HASH_LENGTH)
       file_caption = m.caption
