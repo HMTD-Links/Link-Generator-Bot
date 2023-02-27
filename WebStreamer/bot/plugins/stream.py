@@ -1,6 +1,6 @@
 import logging
 from pyrogram import filters, errors
-from WebStreamer.vars import Var, BIN_CHANNEL
+from WebStreamer.vars import Var
 from urllib.parse import quote_plus
 from WebStreamer.utils import get_hash, get_name
 from WebStreamer.utils.file_properties import get_name, get_media_file_cap, get_media_file_size, get_media_from_message
