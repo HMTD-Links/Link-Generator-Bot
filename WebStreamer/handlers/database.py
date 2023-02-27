@@ -13,7 +13,6 @@ class Database:
         return dict(
             id=id,
             join_date=datetime.date.today().isoformat(),
-            notif=True,
             ban_status=dict(
                 is_banned=False,
                 ban_duration=0,
