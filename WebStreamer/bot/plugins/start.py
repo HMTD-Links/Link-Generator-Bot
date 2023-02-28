@@ -244,6 +244,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         except MessageNotModified:
             pass    
         return
+
 ################################################################################################################################################################################################################################################
 
 REPLY_ERROR = """<b>Use This Command as a Reply to any Telegram Message Without any Spaces.</b>"""
@@ -270,7 +271,7 @@ async def sts(c, m):
         await m.delete()
         return
     await m.reply_text(
-        text=f"**Total Users in Database 📂 :- {await db.total_users_count()}\n\nTotal Users with Notification Enabled 🔔 :- {await db.total_notif_users_count()}**",
+        text=f"**Total Users in Database 📂 :- {await db.total_users_count()}**",
         quote=True
     )
 
