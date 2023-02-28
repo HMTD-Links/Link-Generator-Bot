@@ -18,6 +18,7 @@ import aiofiles
 import datetime
 from WebStreamer.handlers.broadcast import broadcast
 from WebStreamer.handlers.database import Database
+from WebStreamer.handlers.check_user import handle_user_status
 from pyrogram.types import Message
 LOG_CHANNEL = Var.LOG_CHANNEL
 AUTH_USERS = Var.AUTH_USERS
