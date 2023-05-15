@@ -24,6 +24,7 @@ LOG_CHANNEL = Var.LOG_CHANNEL
 AUTH_USERS = Var.AUTH_USERS
 DB_URL = Var.DB_URL
 DB_NAME = Var.DB_NAME
+OWNER_ID = Var.OWNER_ID
 
 db = Database(DB_URL, DB_NAME)
 
@@ -31,17 +32,13 @@ db = Database(DB_URL, DB_NAME)
 ################################################################################################################################################################################################################################################
 # Start Command
 
-MAIN_MENU_BUTTONS = [
+STAR_BUTTONS = [
             [
-                InlineKeyboardButton('👨🏻‍💻 Creator', url='https://t.me/Star_Movies_Karthik')
+                InlineKeyboardButton('👨🏻‍💻 Creator', user_id=OWNER_ID)
             ],
             [
-                InlineKeyboardButton('😁 Help', callback_data="TUTORIAL_CALLBACK"),
-                InlineKeyboardButton('👥 Support', callback_data="GROUP_CALLBACK"),
-                InlineKeyboardButton('😎 About', callback_data="HELP_CALLBACK")
-            ],
-            [
-                InlineKeyboardButton('📢 Update Channel', url='https://t.me/Star_Moviess_Tamil')
+                InlineKeyboardButton('🤖 Bot Channel', url='https://t.me/Star_Bots_Tamil'),                        
+                InlineKeyboardButton('👥 Support Group', url='https://t.me/Star_Bots_Tamil_Support')
             ]
         ]
 
@@ -62,9 +59,9 @@ async def _(bot, cmd):
         else:
             logging.info(f"New User :- Name :- {message.from_user.first_name} ID :- {message.from_user.id}")
 
-@StreamBot.on_message(filters.command("start") & filters.private)
+@StreamBot.on_message(filters.command(["start"]) & filters.private)
 async def start(_, m: Message):
-    reply_markup = InlineKeyboardMarkup(MAIN_MENU_BUTTONS)
+    reply_markup = InlineKeyboardMarkup(STAR_BUTTONS)
     mention = m.from_user.mention(style="md")
     if Var.ALLOWED_USERS and not ((str(m.from_user.id) in Var.ALLOWED_USERS) or (m.from_user.username in Var.ALLOWED_USERS)):
         return await m.reply(
@@ -81,22 +78,16 @@ async def start(_, m: Message):
             reply_markup=reply_markup,
             disable_web_page_preview=True
         )
-    raise StopPropagation
+
 
 
 ################################################################################################################################################################################################################################################
 # Help Command
 
-HELP_BUTTONS = [
-            [
-                InlineKeyboardButton('👨🏻‍💻 Creator', url='https://t.me/Star_Movies_Karthik'),
-                InlineKeyboardButton('📢 Update Channel', url='https://t.me/Star_Moviess_Tamil')
-            ]
-        ]
 
-@StreamBot.on_message(filters.command("help") & filters.private & filters.incoming)
+@StreamBot.on_message(filters.command(["help"]) & filters.private & filters.incoming)
 async def help(client, message):
-    reply_markup = InlineKeyboardMarkup(HELP_BUTTONS)
+    reply_markup = InlineKeyboardMarkup(STAR_BUTTONS)
     mention = message.from_user.mention
     if Var.ALLOWED_USERS and not ((str(message.from_user.id) in Var.ALLOWED_USERS) or (message.from_user.username in Var.ALLOWED_USERS)):
         return await message.reply(
@@ -117,17 +108,11 @@ async def help(client, message):
 ################################################################################################################################################################################################################################################
 # About Command
 
-ABOUT_BUTTONS = [
-            [
-                InlineKeyboardButton('👨🏻‍💻 Creator', url='https://t.me/Star_Movies_Karthik'),
-                InlineKeyboardButton('📢 Update Channel', url='https://t.me/Star_Moviess_Tamil')
-            ]
-        ]
 
-@StreamBot.on_message(filters.command("about") & filters.private & filters.incoming)
+@StreamBot.on_message(filters.command(["about"]) & filters.private & filters.incoming)
 async def about(client, message):
     mention = message.from_user.mention
-    reply_markup = InlineKeyboardMarkup(ABOUT_BUTTONS)
+    reply_markup = InlineKeyboardMarkup(STAR_BUTTONS)
     if Var.ALLOWED_USERS and not ((str(message.from_user.id) in Var.ALLOWED_USERS) or (message.from_user.username in Var.ALLOWED_USERS)):
         return await message.reply(
             "<b>You are not in the allowed list of users who can use me. \
@@ -144,106 +129,7 @@ async def about(client, message):
             disable_web_page_preview=True
         )
 
-################################################################################################################################################################################################################################################
-# CallBackQuery For Star Message
 
-@StreamBot.on_callback_query()
-async def callback_query(client: Client, query: CallbackQuery):
-    if query.data=="HELP_CALLBACK":
-        HELP_BUTTON = [
-            [
-                InlineKeyboardButton("👈🏻 Back", callback_data="START_CALLBACK")
-            ]
-            ]
-        reply_markup = InlineKeyboardMarkup(HELP_BUTTON)
-        mention = query.from_user.mention
-        try:
-            await query.edit_message_text(
-                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
-                    mention
-            ),
-            parse_mode=ParseMode.HTML,
-            reply_markup=reply_markup,
-            disable_web_page_preview=True
-        )
-        except MessageNotModified:
-            pass
-
-    elif query.data=="GROUP_CALLBACK":
-        GROUP_BUTTONS = [
-            [
-                InlineKeyboardButton("Star Movies Feedback", url="https://t.me/Star_Movies_Feedback_Bot")
-            ],
-            [
-                InlineKeyboardButton("👈🏻 Back", callback_data="START_CALLBACK"),
-            ]
-            ]
-        reply_markup = InlineKeyboardMarkup(GROUP_BUTTONS)
-        mention = query.from_user.mention
-        try:
-            await query.edit_message_text(
-                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
-                    mention
-            ),
-            parse_mode=ParseMode.HTML,
-            reply_markup=reply_markup,
-            disable_web_page_preview=True
-        )
-        except MessageNotModified:
-            pass    
-
-    elif query.data=="TUTORIAL_CALLBACK":
-        TUTORIAL_BUTTONS = [
-            [
-                InlineKeyboardButton("👨🏻‍✈️ Admin", url="https://t.me/Star_Movies_Karthik")
-            ],
-            [
-                InlineKeyboardButton("👈🏻 Back", callback_data="START_CALLBACK"),
-            ]
-            ]
-        reply_markup = InlineKeyboardMarkup(TUTORIAL_BUTTONS)
-        mention = query.from_user.mention
-        try:
-            await query.edit_message_text(
-                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
-                    mention
-            ),
-            parse_mode=ParseMode.HTML,
-            reply_markup=reply_markup,
-            disable_web_page_preview=True
-        )
-        except MessageNotModified:
-            pass      
-          
-    elif query.data=="START_CALLBACK":
-        START_BUTTONS = [
-            [
-                InlineKeyboardButton('👨🏻‍💻 Creator', url='https://t.me/Star_Movies_Karthik')
-            ],
-            [
-                InlineKeyboardButton('😁 Help', callback_data="TUTORIAL_CALLBACK"),
-                InlineKeyboardButton('👥 Support', callback_data="GROUP_CALLBACK"),
-                InlineKeyboardButton('😎 About', callback_data="HELP_CALLBACK")
-            ],
-            [
-                InlineKeyboardButton('📢 Update Channel', url='https://t.me/Star_Moviess_Tamil')
-            ]
-        ]
-
-        reply_markup = InlineKeyboardMarkup(START_BUTTONS)
-        mention = query.from_user.mention
-        try:
-            await query.edit_message_text(
-                text="<b>Hi 👋🏻 {} ♥️,  Send me a File 📂 to get an Instant Stream link.</b>".format(
-                    mention
-            ),
-            parse_mode=ParseMode.HTML,
-            reply_markup=reply_markup,
-            disable_web_page_preview=True
-        )
-        except MessageNotModified:
-            pass    
-        return
 
 ################################################################################################################################################################################################################################################
 
