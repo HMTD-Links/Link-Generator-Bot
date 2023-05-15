@@ -13,6 +13,7 @@ class Var(object):
     API_ID = int(environ.get("API_ID"))
     API_HASH = str(environ.get("API_HASH"))
     BOT_TOKEN = str(environ.get("BOT_TOKEN"))
+    OWNER_ID = int(getenv("OWNER_ID", "1391556668"))
     name = str(getenv('name', 'WebStreamer'))
     SLEEP_THRESHOLD = int(environ.get("SLEEP_THRESHOLD", "60"))  # 1 minte
     WORKERS = int(environ.get("WORKERS", "6"))  # 6 workers = 6 commands at once
